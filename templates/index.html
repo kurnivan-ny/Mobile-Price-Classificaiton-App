@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <title>Mobile Price Classification app</title>
+    </head>
+    <body
+        class="
+            flex flex-col
+            justify-between
+            item-center
+            p-8
+            min-h-screen
+            bg-gradient-to-r
+            from-green-400
+            to-blue-500
+            text-gray-800
+            md:flex-row
+        "
+    >
+        <main class="bg-white p-16 rounded-lg">
+            <h1 class="text-3xl font-bold mb-8">
+                Your Phone Specifications:
+            </h1>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="post"
+                class="flex flex-col"
+            >
+                <label for="Pixel Resolution Height" class="mb-2">Pixel Resolution Height:</label>
+                <input
+                    type="text"
+                    name="Pixel Resolution Height"
+                    placeholder="Pixel Resolution Height"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="Pixel Resolution Weight" class="mb-2">Pixel Resolution Weight:</label>
+                <input
+                    type="text"
+                    name="Pixel Resolution Weight"
+                    placeholder="Pixel Resolution Weight"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                
+                <label for="Primary Camera" class="mb-2">Primary Camera (MP):</label>
+                <input
+                    type="text"
+                    name="Primary Camera"
+                    placeholder="Primary Camera"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="Front Camera" class="mb-2">Front Camera (MP):</label>
+                <input
+                    type="text"
+                    name="Front Camera"
+                    placeholder="Front Camera"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="Number of Core Processor" class="mb-2">Number of Core Processor:</label>
+                <input
+                    type="text"
+                    name="Number of Core Processor"
+                    placeholder="Number of Core Processor"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="Internal Memory" class="mb-2">Internal Memory (GB):</label>
+                <input
+                    type="text"
+                    name="Internal Memory"
+                    placeholder="Internal Memory"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="RAM" class="mb-2">RAM (GB):</label>
+                <input
+                    type="text"
+                    name="RAM"
+                    placeholder="RAM"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="Battery Power" class="mb-2">Battery Power (mAh):</label>
+                <input
+                    type="text"
+                    name="Battery Power"
+                    placeholder="Battery Power"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <button
+                    type="submit"
+                    class="
+                        flex
+                        justify-center
+                        align-center
+                        mt-8
+                        p-4
+                        bg-gradient-to-r
+                        from-green-400
+                        to-blue-500
+                        text-white
+                        rounded-md
+                    "
+                >
+                    PREDICT
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-arrow-right ml-4"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </main>
+        <section class="mt-8 h-full flex-auto rounded-lg md:mt-0 md:ml-8">
+            <div class="bg-white p-16 rounded-lg">
+                <h1 class="text-2xl mb-8">
+                    Mobile Price Classification
+                </h1>
+                <h2 class="text-5xl font-bold">{{ Classification }}</h2>
+                {% if (Classification) != 0 %}
+                <div class="mt-8">
+                    <p>Pixel Resolution Height: {{ px_height }} px</p>
+                    <p>Pixel Resolution Weight: {{ px_weight }} px</p>
+                    <p>Primary Camera: {{ pc }} MP</p>
+                    <p>Front Camera: {{ fc }} MP</p>
+                    <p>Number of Core Processor: {{ num_cores }} core</p>
+                    <p>Internal Memory: {{ int_memory }} GB</p>
+                    <p>RAM: {{ ram }} GB</p>
+                    <p>Battery Power: {{ battery_power }} mAh</p>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </body>
+</html>
