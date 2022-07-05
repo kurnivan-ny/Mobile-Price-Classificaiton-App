@@ -8,7 +8,7 @@ model = pickle.load(model_file, encoding='bytes')
 
 @app.route('/')
 def index():
-    return render_template('index.html', Classification=0)
+    return render_template('index.html', Classification="")
 
 @app.route('/predict', methods=['POST'])
 def predict():

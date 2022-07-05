@@ -88,7 +88,7 @@
                     class="p-4 bg-gray-100 rounded-md"
                 />
 
-                <label for="RAM" class="mb-2">RAM (GB):</label>
+                <label for="RAM" class="mb-2">RAM (MB):</label>
                 <input
                     type="text"
                     name="RAM"
@@ -97,7 +97,7 @@
                     class="p-4 bg-gray-100 rounded-md"
                 />
 
-                <label for="Battery Power" class="mb-2">Battery Power (mAh):</label>
+                <label for="Battery Power" class="mb-2">Battery Power (mAH):</label>
                 <input
                     type="text"
                     name="Battery Power"
@@ -146,7 +146,7 @@
                     Mobile Price Classification
                 </h1>
                 <h2 class="text-5xl font-bold">{{ Classification }}</h2>
-                {% if (Classification) != 0 %}
+                {% if (Classification) != "" %}
                 <div class="mt-8">
                     <p>Pixel Resolution Height: {{ px_height }} px</p>
                     <p>Pixel Resolution Weight: {{ px_weight }} px</p>
@@ -154,8 +154,8 @@
                     <p>Front Camera: {{ fc }} MP</p>
                     <p>Number of Core Processor: {{ num_cores }} core</p>
                     <p>Internal Memory: {{ int_memory }} GB</p>
-                    <p>RAM: {{ ram }} GB</p>
-                    <p>Battery Power: {{ battery_power }} mAh</p>
+                    <p>RAM: {{ ram }} MB</p>
+                    <p>Battery Power: {{ battery_power }} mAH</p>
                 </div>
                 {% endif %}
             </div>
